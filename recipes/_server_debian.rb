@@ -106,6 +106,10 @@ execute 'install-grants' do
   action :nothing
 end
 
+file '/etc/mysql_grants.sql' do
+  action :delete
+end
+
 template '/etc/mysql/debian.cnf' do
   source 'debian.cnf.erb'
   owner 'root'
