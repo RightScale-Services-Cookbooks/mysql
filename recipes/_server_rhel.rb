@@ -89,6 +89,10 @@ execute 'install-grants' do
   notifies :restart, 'service[mysql]', :immediately
 end
 
+file '/etc/mysql_grants.sql' do
+  action :delete
+end
+
 #----
 template 'final-my.cnf' do
   path '/etc/my.cnf'

@@ -62,3 +62,7 @@ execute 'mysql-install-privileges' do
   command "\"#{node['mysql']['windows']['mysql_bin']}\" -u root #{node['mysql']['server_root_password'].empty? ? '' : '-p' }\"#{node['mysql']['server_root_password']}\" < \"#{grants_path}\""
   action :nothing
 end
+
+file grants_path do
+  action :delete
+end
